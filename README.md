@@ -88,10 +88,11 @@ used to generate the binary (indicated in the releases tab)
 * Download and install R from https://cran.r-project.org/ (in case you do not have it already)
 * Open R and install the following packages (Rcpp, RInside, RcppArmadillo, DESeq2, edgeR, Rtsne and SCRAN)
 
-        source("https://bioconductor.org/biocLite.R")
-        biocLite("DESeq2")
-        biocLite("scran")
-        biocLite("edgeR")
+        if (!requireNamespace("BiocManager", quietly = TRUE))
+            install.packages("BiocManager")
+        BiocManager::install("DESeq2")
+        BiocManager::install("scran")
+        BiocManager::install("edgeR")
         install.packages(c("RcppArmadillo", "Rcpp", "RInside", "Rtsne"))
 	
 * Download the installer (DMG) open it and drag the ST Viewer icon to Applications and then 
@@ -103,21 +104,22 @@ the ST Viewer will be installed in your system.
 * Download and install Rtools 32bits from https://cran.r-project.org/bin/windows/Rtools/
 * Open R and install the following packages (Rcpp, RInside, RcppArmadillo, DESeq2, edgeR, Rtsne and SCRAN)
 
-        source("https://bioconductor.org/biocLite.R")
-        biocLite("DESeq2")
-        biocLite("scran")
-        biocLite("edgeR")
+        if (!requireNamespace("BiocManager", quietly = TRUE))
+            install.packages("BiocManager")
+        BiocManager::install("DESeq2")
+        BiocManager::install("scran")
+        BiocManager::install("edgeR")
         install.packages(c("RcppArmadillo", "Rcpp", "RInside", "Rtsne"))
 	
 * Make sure that your PATH environment variable contains Rtools' bin, Rtools MinGW's bin and R's bin paths
 
-		eg PATH=C:\RTools\3.4\bin\;C:\RTools\3.4\mingw_32\bin\;C:\Program Files\R\R-3.4.3\bin\i386
+		eg PATH=C:\RTools\bin\;C:\RTools\mingw_32\bin\;C:\Program Files\R\R-3.6.0\bin\i386
 
 * Make sure that you do not have another MinGW in your PATH variable
 
 * Make sure to have a environment variable called R_HOME pointing to where R is installed (its root folder)
 
-		eg R_HOME=C:\Program Files\R\R-3.4.3
+		eg R_HOME=C:\Program Files\R\R-3.6.0
 		
 * Download the Windows installer double click on it and follow the instructions, once done the ST Viewer
 will be installed in your system. 
@@ -150,19 +152,7 @@ Then launch the image according to where your file are located.
 
 ## Building from the source 
 
-* Download and install CMake 
-
-	Tips (for Linux and OSX; first download the file to a folder then in that folder open a terminal):
-		
-		wget https://cmake.org/files/v3.7/cmake-3.7.2.tar.gz
-		tar -xvzf cmake-3.7.2.tar.gz
-		cd cmake-3.7.2
-		./configure
-		make -j4
-		sudo make install
-	
-	For Windows you can download the msi installer from the downloads section (32 bits). 
-	Remember to add CMAKE to the system path when asked.
+* Download and install CMake from https://cmake.org/download
 
 * Download and install Qt open source from http://qt-project.org/downloads (Choose Desktop application and Open Source and then use the defaultsettings and location). For Windows you must choose the mingw32 option and include QT Charts. 
 
@@ -186,10 +176,11 @@ Then launch the image according to where your file are located.
 
 * Open R and install the following packages (Rcpp, RInside, RcppArmadillo, DESeq2, Rtsne and SCRAN)
 
-        source("https://bioconductor.org/biocLite.R")
-        biocLite("DESeq2")
-        biocLite("scran")
-        biocLite("edgeR") 
+        if (!requireNamespace("BiocManager", quietly = TRUE))
+            install.packages("BiocManager")
+        BiocManager::install("DESeq2")
+        BiocManager::install("scran")
+        BiocManager::install("edgeR")
         install.packages(c("RcppArmadillo", "Rcpp", "RInside", "Rtsne"))
 
 ###### OSX
@@ -211,7 +202,7 @@ Then launch the image according to where your file are located.
 
     DCMAKE_PREFIX_PATH = the path to where Qt, armadillo and qcustomplot are installed
     
-    eg: "/Users/username/Qt/5.9.2/clang_64;/path/to/qcustomplot;/Users/username/armadillo"
+    eg: "/Users/username/Qt/5.12.1/clang_64;/path/to/qcustomplot;/Users/username/armadillo"
 
     DCMAKE_OSX_SYSROOT = provides the path to the MacOS X SDK that is to be used (Only OSX users)
     
@@ -254,7 +245,7 @@ Or you can follow the process outlined below.
 
     DCMAKE_PREFIX_PATH = the path to where Qt, armadillo and qcustomplot are installed
     
-    eg: "/Users/username/Qt/5.9.2/gcc;/Users/username/qcustomplot;/Users/username/armadillo"
+    eg: "/Users/username/Qt/5.12.1/gcc;/Users/username/qcustomplot;/Users/username/armadillo"
 
 * Then type the following to build and install
 
@@ -281,13 +272,13 @@ Note that for Linux you may want to update your LD_LIBRARY_PATH variable to cont
 	
 * Make sure that your PATH environment variable contains Rtools' bin, Rtools MinGW's bin and R's bin paths
 
-		eg PATH=C:\RBuildTools\3.4\bin\;C:\RBuildTools\3.4\mingw_32\bin\;C:\Program Files\R\R-3.4.3\bin\i386
+		eg PATH=C:\RTools\bin\;C:\RTools\mingw_32\bin\;C:\Program Files\R\R-3.6.0\bin\i386
 
 * Make sure that you do not have another MinGW in your PATH variable
 
 * Make sure to have a environment variable called R_HOME pointing to where R is installed (its root folder)
 
-		eg R_HOME=C:\Program Files\R\R-3.4.3
+		eg R_HOME=C:\Program Files\R\R-3.6.0
  
 * Open a windows terminal (cmd.exe)
 
@@ -303,7 +294,7 @@ Note that for Linux you may want to update your LD_LIBRARY_PATH variable to cont
 
   DCMAKE_PREFIX_PATH = the path to where Qt and qcustomplot are installed
     
-    eg: "C:\Qt\5.9.1\mingw53_32;C:\qcustomplot"
+    eg: "C:\Qt\5.12.1\mingw53_32;C:\qcustomplot"
     
   DARMADILLO_PATH = indicates where armadillo was extracted
   
