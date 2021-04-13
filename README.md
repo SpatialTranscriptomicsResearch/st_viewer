@@ -1,3 +1,5 @@
+## THIS VERSION IS DEPRECATED, PLEASE GO TO https://github.com/jfnavarro/st_viewer FOR THE MOST UPDATED VERSION
+
 # Spatial Transcriptomics Research Viewer
 
 The ST viewer is a tool that allows the visualization of spatially resolved gene
